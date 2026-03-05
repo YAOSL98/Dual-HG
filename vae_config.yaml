@@ -1,0 +1,23 @@
+# 路径配置
+data_dir: /sharefiles1/yaoshuilian/projects/CVPR2026/hypergraphs_mixed_k9/   # 存放 .bin 文件的目录
+labels_csv: ./data/all_12_name_seed2.csv                                        # case_id,classname
+save_dir: ./vae_checkpoints_name_seed2                                     # 模型保存目录
+
+# 模型参数
+node_feat_dim: 1024       # 节点特征维度 (和 .bin 里的 'feat' 对齐)
+latent_dim: 32          # VAE 潜在空间维度
+class_emb_dim: 128        # 类别嵌入维度
+hidden_dim: 128           # 编码器/解码器隐层维度
+graph_emb_dim: 1024   # 图级嵌入维度，和 hidden_dim 保持一致即可
+
+
+# 训练参数
+batch_size: 1             # 因为每个图规模较大，通常设为 1
+epochs: 100               # 训练轮数
+lr: 0.0001
+
+
+# 其他可选参数
+max_nodes: 2048000         # 节点位置嵌入的最大节点数（要 ≥ 数据集中最大节点数）
+seed: 42                  # 随机种子，保证可复现
+device: cuda              # 可选：cuda / cpu
